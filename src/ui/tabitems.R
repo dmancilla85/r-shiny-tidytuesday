@@ -14,13 +14,7 @@ tabs <- modules::module({
             shiny::tabPanel(
               value = "tab3",
               title = "Top 20 menos jugados por año y mes",
-              shiny::selectInput(
-                inputId = "sel_year_min",
-                selectize = TRUE,
-                width = 100,
-                label = "Año",
-                choices = c()
-              ),
+              shiny::uiOutput("sel_game"),
               htmltools::div(
                 DT::dataTableOutput(outputId = "tb_games_avg_min", width = "60%"),
                 style = "font-size:85%",
@@ -43,12 +37,11 @@ tabs <- modules::module({
             ),
             shiny::tabPanel(
               value = "tab1", title = "Detalle por juego",
-              shiny::selectInput(
+              shiny::selectizeInput(
                 inputId = "sel_game",
-                selectize = TRUE,
                 width = 200,
                 label = "Videojuego",
-                choices = c()
+                choices = NULL
               ),
               shiny::plotOutput(outputId = "plt_games")
             )

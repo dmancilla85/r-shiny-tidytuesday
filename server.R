@@ -36,9 +36,10 @@ server <- function(input, output, session) {
       games$gamename
     ))
 
-    shiny::updateSelectInput(session, "sel_game",
+    shiny::updateSelectizeInput(session, "sel_game",
       label = "Videojuego",
-      choices = gamenames
+      choices = gamenames,
+      server = TRUE
     )
   })
 

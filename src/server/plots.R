@@ -23,8 +23,8 @@ plots <- modules::module({
         }) +
         theme_dark() +
         xlab("") +
-        ggtitle(stringr::str_interp("${title} - Promedio de jugadores por mes")) +
-        ylab("Promedio de jugadores mensuales (por mil)") +
+        ggtitle(stringr::str_interp("${title} - Promedio de jugadores en simúltaneo por mes")) +
+        ylab("Promedio de jugadores mensuales (miles)") +
         theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
     } else {
       p <- ggplot() +
