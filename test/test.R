@@ -24,7 +24,7 @@ stat <- my_data %>%
   map(arrange, desc(avg)) %>%
   map(head, 10)
 
-dt<-as.data.frame(stat[["2020"]])
+dt <- as.data.frame(stat[["2020"]])
 
 dt %>%
   dplyr::select(
@@ -32,7 +32,7 @@ dt %>%
     "Mes" = month,
     "Media de jugadores en simultáneo" = avg,
     "Pico de jugadores en simultáneo" = peak,
-    "% de la media en el valor máximo"=avg_peak_perc
+    "% de la media en el valor máximo" = avg_peak_perc
   )
 
 
@@ -53,9 +53,11 @@ my_data$fecha <- as.Date(my_data$fecha)
 filtered <- my_data %>% dplyr::filter(gamename == "Dota 2")
 filtered %>% ggplot(aes(x = fecha, y = avg)) +
   geom_line(size = 1.3, color = "orange") +
-  scale_x_date(labels = date_format("%Y-%m"),date_breaks = "3 months") +
-  scale_y_continuous(labels=function(n){format(n/1000, scientific = FALSE)})+
+  scale_x_date(labels = date_format("%Y-%m"), date_breaks = "3 months") +
+  scale_y_continuous(labels = function(n) {
+    format(n / 1000, scientific = FALSE)
+  }) +
   theme_dark() +
   xlab("") +
-  ylab("Promedio de jugadores mensuales (por mil)")+
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) 
+  ylab("Promedio de jugadores mensuales (por mil)") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))

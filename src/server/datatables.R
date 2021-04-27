@@ -9,7 +9,7 @@ tables <- modules::module({
       split(.$year) %>%
       purrr::map(dplyr::arrange, avg) %>%
       purrr::map(utils::head, 20)
-
+    
     stat <- as.data.frame(stat[[year]]) %>%
       dplyr::select(
         "Videojuego" = gamename,
